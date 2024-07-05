@@ -1,5 +1,20 @@
 version: "3.1"
 services:
+  # Frontend (Next.js app)
+  frontend:
+    depends_on:
+      - mongo
+    environment:
+      - DATABASE_URL=${DATABASE_URLL}
+    build: . # Build the image from the current directory (Dockerfile needed later)
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000" # Map container port 3000 to your local machine's port 3000
+
   # This config is for MongoDB v4
   # It's a Replica Set (required for Prisma Client)
   mongo:

@@ -5,7 +5,7 @@ services:
     depends_on:
       - mongo
     environment:
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL
     build: . # Build the image from the current directory (Dockerfile needed later)
     restart: always
     volumes:
